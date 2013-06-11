@@ -1,26 +1,28 @@
 <?php
 
+$root = __DIR__.'/..';
 $package_name = 'fabgit.phar';
-
 
 	$phar = new Phar(__DIR__ . '/../' . $package_name, 0, 'fab');
 	$phar->startBuffering();
 
-	addFile($phar, __DIR__  . '/../src/fab.php');
-	addFile($phar, __DIR__  . '/../vendor/whatthejeff/fab/src/Fab/Fab.php');
-	addFile($phar, __DIR__  . '/../vendor/whatthejeff/fab/src/Fab/SuperFab.php');
-	addFile($phar, __DIR__  . '/../vendor/whatthejeff/fab/src/Fab/Factory.php');
+	addFile($phar, $root.'/src/fab.php', 'src/fab.php');
 
-	$defaultStub = $phar->createDefaultStub('fab.php');
-	
+	$files = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($root.'/vendor', FilesystemIterator::SKIP_DOTS));
+	foreach ($files as $file) {
+		$filename = substr($file, strlen($root.'/'));
+		addFile($phar, $file, $filename);
+	}
+
+	$defaultStub = $phar->createDefaultStub('src/fab.php');
+
 	$stub = "#!/usr/bin/env php \n".$defaultStub;
 	$phar->setStub($stub);
 	$phar->stopBuffering();
 	unset($phar);
 
-
-function addFile($phar, $file)
+function addFile($phar, $file, $filename)
 {
 	$content = file_get_contents($file);
-	$phar->addFromString(basename($file), $content);
+	$phar->addFromString($filename, $content);
 }

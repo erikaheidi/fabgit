@@ -1,7 +1,5 @@
 <?php
-include('phar://fab/Fab.php');
-include('phar://fab/SuperFab.php');
-include('phar://fab/Factory.php');
+include(__DIR__.'/../vendor/autoload.php');
 
 if (!defined('STDIN')) {
     echo "sorry, but this script should only be used in the command line.";
