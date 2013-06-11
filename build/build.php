@@ -7,9 +7,9 @@ $package_name = 'fabgit.phar';
 	$phar->startBuffering();
 
 	addFile($phar, __DIR__  . '/../src/fab.php');
-	addFile($phar, __DIR__  . '/../src/vendor/whatthejeff/fab/src/Fab/Fab.php');
-	addFile($phar, __DIR__  . '/../src/vendor/whatthejeff/fab/src/Fab/SuperFab.php');
-	addFile($phar, __DIR__  . '/../src/vendor/whatthejeff/fab/src/Fab/Factory.php');
+	addFile($phar, __DIR__  . '/../vendor/whatthejeff/fab/src/Fab/Fab.php');
+	addFile($phar, __DIR__  . '/../vendor/whatthejeff/fab/src/Fab/SuperFab.php');
+	addFile($phar, __DIR__  . '/../vendor/whatthejeff/fab/src/Fab/Factory.php');
 
 	$defaultStub = $phar->createDefaultStub('fab.php');
 	
