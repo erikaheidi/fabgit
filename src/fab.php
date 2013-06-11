@@ -7,10 +7,12 @@ if (!defined('STDIN')) {
 }
 
 array_shift($argv);
-$args = implode(' ', $argv);
+$args = implode(' ', array_map('escapeshellarg', $argv));
 
 $fab = new Fab\SuperFab();
 
-$output = shell_exec("git $args");
-
-echo $fab->paint($output);
+$process = popen("git $args", 'r');
+while (!feof($process) && $data = fread($process, 1024)) {
+    echo $fab->paint($data);
+}
+fclose($process);
