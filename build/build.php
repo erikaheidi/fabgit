@@ -17,14 +17,6 @@ $package_name = 'fabgit.phar';
 	$phar->setStub($stub);
 	$phar->stopBuffering();
 	unset($phar);
-	//$phar["fab.php"] = file_get_contents($srcRoot . "/fab.php");
-	//$phar->buildFromDirectory($root_folder);
-	/*
-	$phar["Fab.php"] = file_get_contents($srcRoot . "/vendor/whatthejeff/fab/src/Fab.php");
-	$phar["SuperFab.php"] = file_get_contents($srcRoot . "/vendor/whatthejeff/fab/src/SuperFab.php");
-	$phar["Factory.php"] = file_get_contents($srcRoot . "/vendor/whatthejeff/fab/src/Fab.php");
-	
-	//$phar["common.php"] = file_get_contents($srcRoot . "/common.php");*/
 
 
 function addFile($phar, $file)
