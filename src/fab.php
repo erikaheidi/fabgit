@@ -11,7 +11,7 @@ $args = implode(' ', array_map('escapeshellarg', $argv));
 
 $fab = new Fab\SuperFab();
 
-$process = popen("git $args", 'r');
+$process = popen("git $args 2>&1", 'r');
 while (!feof($process) && $data = fread($process, 1024)) {
     echo $fab->paint($data);
 }
