@@ -12,9 +12,11 @@ Installation
 
 You only need the fabgit.phar file.
 
-`curl -O http://erikaheidi.github.io/fabgit/fabgit.phar`
-
-`sudo cp fabgit.phar /usr/sbin/fabgit`
+```
+curl -O http://erikaheidi.github.io/fabgit/fabgit.phar
+chmod +x fabgit.phar
+sudo cp fabgit.phar /usr/sbin/fabgit
+```
 
 And it shall be available globally.
 
