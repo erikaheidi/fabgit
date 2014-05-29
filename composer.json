@@ -1,5 +1,5 @@
 {
     "require": {
-        "whatthejeff/fab": "1.0.*@dev"
+        "whatthejeff/fab": "~1.0"
     }
 }
